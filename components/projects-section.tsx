@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { TrendingUp, Users, Zap, BrainCircuit } from "lucide-react"
+import { TrendingUp, Users, Zap, BrainCircuit, ExternalLink, Github } from "lucide-react"
 
 const projects = [
   {
@@ -13,8 +13,9 @@ const projects = [
     ],
     technologies: ["Next.js", "FastAPI", "PostgreSQL", "OpenAI", "Agentic AI"],
     icon: <BrainCircuit className="w-6 h-6" />,
-    link: "https://helix-ai-finance-console-k46fbwnv8-adityas-projects-f913f7c9.vercel.app/",
-    clickable: true,
+    liveLink: "https://helix-ai-finance-console.vercel.app/",
+    sourceLink: "https://github.com/rawat20/helix-ai-finance-console",
+    hasLinks: true,
   },
   {
     title: "Stock Trend Analysis using LLM and GRU Models",
@@ -27,8 +28,9 @@ const projects = [
     ],
     technologies: ["Python", "LSTM", "GRU", "LLM", "Streamlit", "Machine Learning"],
     icon: <TrendingUp className="w-6 h-6" />,
-    link: "https://stockpredictionapp-itbnjcrzne7fp8uvouddwh.streamlit.app/",
-    clickable: true,
+    liveLink: "https://stockpredictionapp-itbnjcrzne7fp8uvouddwh.streamlit.app/",
+    sourceLink: "https://github.com/rawat20/stock_prediction_app",
+    hasLinks: true,
   },
   {
     title: "Optium ERP System",
@@ -41,8 +43,8 @@ const projects = [
     ],
     technologies: ["Angular", "TypeScript", "Cloud Integration", "Real-time Analytics"],
     icon: <Zap className="w-6 h-6" />,
-    link: "https://github.com/rawat20/optium-erp",
-    clickable: false,
+    sourceLink: "https://github.com/rawat20/optium-erp",
+    hasLinks: false,
   },
   {
     title: "RealReco – Dealer & Distributor Management System",
@@ -55,8 +57,8 @@ const projects = [
     ],
     technologies: ["React", "RESTful APIs", "Real-time Data", "UI/UX Design"],
     icon: <Users className="w-6 h-6" />,
-    link: "https://github.com/rawat20/realreco-system",
-    clickable: false,
+    sourceLink: "https://github.com/rawat20/realreco-system",
+    hasLinks: false,
   },
 ]
 
@@ -88,70 +90,77 @@ export function ProjectsSection() {
 
         <div className="overflow-x-auto pb-4 scrollbar-visible">
           <div className="flex gap-8 min-w-max px-4">
-            {projects.map((project, index) => {
-              const CardComponent = (
-                <Card className="bg-white dark:bg-[#3e4759] border-2 border-black dark:border-white hover:shadow-lg transform hover:-translate-y-1 group h-full w-80 flex-shrink-0 transition-all duration-300">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
+            {projects.map((project, index) => (
+              <Card key={index} className="bg-white dark:bg-[#3e4759] border-2 border-black dark:border-white hover:shadow-lg transform hover:-translate-y-1 group h-full w-80 flex-shrink-0 transition-all duration-300 flex flex-col">
+                <CardHeader className="flex-shrink-0">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
                       <div className="p-2 bg-gray-100 dark:bg-[#1a202c] rounded-lg transition-colors duration-300">
                         <div className="text-black dark:text-white transition-colors duration-300">{project.icon}</div>
                       </div>
-                      <CardTitle className="text-xl text-black dark:text-white transition-colors duration-300">
+                      <CardTitle className="text-xl text-black dark:text-white transition-colors duration-300 line-clamp-2">
                         {project.title}
                       </CardTitle>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-black dark:text-[#d1d5db] leading-relaxed transition-colors duration-300">
-                      {project.description}
-                    </p>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4 flex-grow flex flex-col">
+                  <p className="text-black dark:text-[#d1d5db] leading-relaxed transition-colors duration-300 line-clamp-3">
+                    {project.description}
+                  </p>
 
-                    <div>
-                      <h4 className="font-semibold mb-2 text-sm text-black dark:text-white transition-colors duration-300">
-                        Key Achievements:
-                      </h4>
-                      <ul className="space-y-1">
-                        {project.achievements.map((achievement, achievementIndex) => (
-                          <li key={achievementIndex} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-black dark:bg-white rounded-full mt-2 flex-shrink-0 transition-colors duration-300" />
-                            <p className="text-sm text-black dark:text-[#d1d5db] transition-colors duration-300">
-                              {achievement}
-                            </p>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <div
-                          key={techIndex}
-                          className="bg-gray-100 dark:bg-[#1a202c] px-2 py-1 rounded border border-black dark:border-white transition-all duration-300"
-                        >
-                          <span className="text-xs text-black dark:text-white transition-colors duration-300">{tech}</span>
-                        </div>
+                  <div className="flex-grow">
+                    <h4 className="font-semibold mb-2 text-sm text-black dark:text-white transition-colors duration-300">
+                      Key Achievements:
+                    </h4>
+                    <ul className="space-y-1">
+                      {project.achievements.map((achievement, achievementIndex) => (
+                        <li key={achievementIndex} className="flex items-start gap-2">
+                          <div className="w-1.5 h-1.5 bg-black dark:bg-white rounded-full mt-2 flex-shrink-0 transition-colors duration-300" />
+                          <p className="text-sm text-black dark:text-[#d1d5db] transition-colors duration-300 line-clamp-2">
+                            {achievement}
+                          </p>
+                        </li>
                       ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="bg-gray-100 dark:bg-[#1a202c] px-2 py-1 rounded border border-black dark:border-white transition-all duration-300"
+                      >
+                        <span className="text-xs text-black dark:text-white transition-colors duration-300">{tech}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {project.hasLinks && (
+                    <div className="flex gap-3 pt-4 border-t border-black dark:border-white flex-shrink-0">
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-3 py-2 rounded hover:opacity-80 transition-opacity duration-300"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span className="text-sm font-medium">Live Demo</span>
+                      </a>
+                      <a
+                        href={project.sourceLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-3 py-2 rounded hover:opacity-80 transition-opacity duration-300"
+                      >
+                        <Github className="w-4 h-4" />
+                        <span className="text-sm font-medium">Source Code</span>
+                      </a>
                     </div>
-                  </CardContent>
-                </Card>
-              )
-
-              if (project.clickable) {
-                return (
-                  <a
-                    key={index}
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-pointer"
-                  >
-                    {CardComponent}
-                  </a>
-                )
-              }
-
-              return <div key={index}>{CardComponent}</div>
-            })}
+                  )}
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
