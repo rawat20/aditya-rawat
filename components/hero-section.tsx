@@ -42,7 +42,7 @@ export function HeroSection() {
               Full Stack Developer
             </p>
             <p className="text-base md:text-lg text-black dark:text-white transition-all duration-300">
-              New York, USA • 2.5+ Years Experience
+              New York, USA • 3 Years Experience
             </p>
           </div>
         </div>
