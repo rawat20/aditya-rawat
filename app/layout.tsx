@@ -6,7 +6,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Aditya Rawat - Full Stack Developer",
-  description: "Portfolio of Aditya Rawat - Full Stack Developer with 2.5+ years of experience",
+  description: "Portfolio of Aditya Rawat - Full Stack Developer with 3+ years of experience",
   generator: "v0.app",
 }
 
